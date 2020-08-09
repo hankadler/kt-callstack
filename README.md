@@ -1,4 +1,4 @@
-# kotlin-io-console
+# kotlin-util-callstack
 
 Functions for runtime call stack inspection.
 
