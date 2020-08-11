@@ -14,14 +14,17 @@ class CallStackCheck {
             println("--- Callable Units ---")
             println(CallStack)
 
-            println("\n--- ClassNames Stack ---")
+            println("--- Class Names Stack ---")
             CallStack.printClassNames()
 
-            println("\n--- Caller of SubClass ---")
+            println("\n--- Caller of Sub Class ---")
             println(CallStack.getCallerOf(Thread.currentThread().stackTrace[1]))
 
-            println("\n--- Caller ClassName of SubClass ---")
+            println("\n--- Caller Class Name of Sub Class ---")
             println(CallStack.getCallerOf(this::class.qualifiedName))
+
+            println("\n--- 'com.hankadler.util.CallStackCheckKt' Units ---")
+            CallStack.getUnits(CallStack.classNames[0]).forEach { println(it) }
         }
     }
 }

@@ -8,7 +8,7 @@ package com.hankadler.util
  * Functions for runtime call stack inspection.
  *
  * @author   hank@hankadler.com
- * @version  0.2.0
+ * @version  0.3.0
  * @license  MIT
  *
  * @property units List of callable units in chronological order.
@@ -51,6 +51,13 @@ object CallStack {
             return classNames[index - 1]
         }
         return null
+    }
+
+    /**
+     * Returns all units containing `className`.
+     */
+    fun getUnits(className: String): List<StackTraceElement> {
+        return units.filter { it.toString().contains("$className.") }
     }
 
     override fun toString(): String {
