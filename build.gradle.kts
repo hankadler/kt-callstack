@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "com.hankadler.util"
-version = "0.1.0"
+version = "0.2.0"
 
 repositories {
     jcenter()
@@ -99,9 +99,8 @@ val dokkaJar by tasks.creating(Jar::class) {
 
 /*** Publishing ***/
 val repoName = "kotlin-util"
-val repoDesc = "General utilities."
 val pkgDesc = "Functions for runtime call stack inspection."
-val githubRepo = "https://github.com/hankadler/$repoName-${project.name}"
+val gitRepoName = "hankadler/$repoName-${project.name}"
 val licenseName = "MIT"
 val licenseUrl = "https://opensource.org/licenses/mit-license.php"
 
@@ -109,18 +108,19 @@ bintray {
     user = System.getenv("BINTRAY_USER")
     key = System.getenv("BINTRAY_KEY")
     publish = true
+
     setPublications(repoName)
     pkg.apply {
         repo = repoName
-        desc = repoDesc
         name = project.name
-        description = pkgDesc
+        desc = pkgDesc
+        description = desc
         version.name = project.version.toString()
         setLicenses("MIT")
-        githubRepo = githubRepo
-        githubReleaseNotesFile = "$githubRepo/CHANGELOG.md"
-        issueTrackerUrl = "$githubRepo/issues"
-        vcsUrl = "$githubRepo.git"
+        githubRepo = gitRepoName
+        githubReleaseNotesFile = "CHANGELOG.md"
+        issueTrackerUrl = "$gitRepoName/issues"
+        vcsUrl = "$gitRepoName.git"
         //websiteUrl = "www.hankadler.com/coding/kotlin"
     }
 }
