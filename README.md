@@ -36,6 +36,7 @@ class App {
     fun main() {
         println(CallStack)
         println(CallStack.getCallerOf(this::class.qualifiedName))
+        println(CallStack.getCallerOf(Thread.currentThread().stackTrace[1]))
     }
 }
 
@@ -56,6 +57,7 @@ Run:
 [7]: java.lang.Thread.getStackTrace(Thread.java:1559)
 
 com.hankadler.util.AppKt
+com.hankadler.util.ExampleKt.main(Example.kt:12)
 ```
 
 ## License
