@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.hankadler.util:callstack:0.1.0")
+    implementation("com.hankadler.util:callstack:0.2.0")
 }
 ```
 
@@ -32,7 +32,7 @@ Source:
 
 import com.hankadler.util.CallStack
 
-class App {
+class CallStackExample {
     fun main() {
         println(CallStack)
         println(CallStack.getCallerOf(this::class.qualifiedName))
@@ -41,23 +41,23 @@ class App {
 }
 
 fun main() {
-    App().main()
+    CallStackExample().main()
 }
 ```
 
 Run:
 ```
-[0]: com.hankadler.util.AppKt.main(App.kt)
-[1]: com.hankadler.util.AppKt.main(App.kt:11)
-[2]: com.hankadler.util.App.main(App.kt:5)
+[0]: com.hankadler.util.CallStackExampleKt.main(CallStackExample.kt)
+[1]: com.hankadler.util.CallStackExampleKt.main(App.kt:11)
+[2]: com.hankadler.util.CallStackExample.main(CallStackExample.kt:5)
 [3]: java.io.PrintStream.println(PrintStream.java:821)
 [4]: java.lang.String.valueOf(String.java:2994)
 [5]: com.hankadler.util.CallStack.toString(CallStack.kt:49)
 [6]: com.hankadler.util.CallStack.getUnits(CallStack.kt:19)
 [7]: java.lang.Thread.getStackTrace(Thread.java:1559)
 
-com.hankadler.util.AppKt
-com.hankadler.util.ExampleKt.main(Example.kt:12)
+com.hankadler.util.CallStackExampleKt
+com.hankadler.util.CallStackExampleKt.main(CallStackExample.kt:12)
 ```
 
 ## License
