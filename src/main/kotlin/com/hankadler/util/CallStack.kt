@@ -8,7 +8,7 @@ package com.hankadler.util
  * Functions for runtime call stack inspection.
  *
  * @author   hank@hankadler.com
- * @version  0.1.0
+ * @version  0.2.0
  * @license  MIT
  *
  * @property units List of callable units in chronological order.
@@ -30,14 +30,24 @@ object CallStack {
     }
 
     /**
+     * Returns the `StackTraceElement` of the caller of the current unit.
+     */
+    fun getCallerOf(unit: StackTraceElement?): StackTraceElement? {
+        unit ?: return null
+        val index = units.indexOf(unit)
+        if (index > 0) {
+            return units[index - 1]
+        }
+        return null
+    }
+
+    /**
      * Returns the class name of the caller of the current unit.
      */
     fun getCallerOf(className: String?): String? {
-        if (className == null) {
-            return null
-        }
+        className ?: return null
         val index = classNames.indexOf(className)
-        if (index != -1 && index > 0) {
+        if (index > 0) {
             return classNames[index - 1]
         }
         return null
