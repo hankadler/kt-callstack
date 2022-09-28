@@ -1,4 +1,4 @@
-# kotlin-util-callstack
+# kt-callstack
 
 Functions for runtime call stack inspection.
 
